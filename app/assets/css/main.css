@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Custom styles for the blog */
+.prose {
+  @apply max-w-none;
+}
+
+.prose pre {
+  @apply bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(139, 92, 246) 100%);
+}
+
+/* Card hover effects */
+.blog-card {
+  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
