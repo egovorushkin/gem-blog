@@ -2,7 +2,7 @@
 title: "Java Performance Optimization: Best Practices and Common Pitfalls"
 description: "Discover essential techniques for optimizing Java application performance, from JVM tuning to code-level improvements."
 publishedAt: "2024-01-10"
-tags: ["java", "performance", "optimization", "jvm"]
+tags: ['java', 'performance', 'optimization', 'jvm']
 readTime: "12 min read"
 ---
 
