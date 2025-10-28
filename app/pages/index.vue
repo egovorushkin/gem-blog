@@ -48,7 +48,7 @@
 
       <!-- View All Button -->
       <div class="text-center mt-12" v-if="posts && posts.length >= 6">
-        <UButton to="/blog" size="lg" variant="outline" color="neutral">
+        <UButton to="/blog?view=list" size="lg" variant="outline" color="neutral">
           View All Posts
         </UButton>
       </div>
