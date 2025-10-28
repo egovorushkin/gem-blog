@@ -20,14 +20,16 @@
           <!-- Article Header -->
           <header class="mb-12">
             <div class="flex flex-wrap gap-2 mb-4">
-              <UBadge
+              <NuxtLink
                 v-for="tag in data.tags"
                 :key="tag"
-                variant="soft"
-                color="indigo"
+                :to="`/tags/${tag}`"
+                class="group"
               >
-                {{ tag }}
-              </UBadge>
+                <UBadge variant="soft" color="indigo" class="group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20">
+                  {{ tag }}
+                </UBadge>
+              </NuxtLink>
             </div>
 
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">

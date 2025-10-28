@@ -41,21 +41,26 @@
 </template>
 
 <script setup>
-// Fetch all tags with post counts
-const { data: posts } = await useAsyncData('all-posts', () => 
-  queryContent('/blog').only(['tags']).find()
-)
+// Fetch all posts and compute tag frequencies (Nuxt Content v4)
+const { data: posts } = await useAsyncData('all-posts', async () => {
+  try {
+    return await queryCollection('blog').all() || []
+  } catch (err) {
+    console.warn('Failed to load posts for tags', err)
+    return []
+  }
+})
 
 // Calculate tag frequencies
 const tags = computed(() => {
   const tagCounts = {}
-  
   posts.value?.forEach(post => {
-    post.meta.tags?.forEach(tag => {
+    const postTags = post.tags || []
+    postTags.forEach(tag => {
       tagCounts[tag] = (tagCounts[tag] || 0) + 1
     })
   })
-  
+
   return Object.entries(tagCounts)
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count)

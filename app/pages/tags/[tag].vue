@@ -54,14 +54,19 @@
 const route = useRoute()
 const tag = route.params.tag
 
-// Fetch posts with the specified tag
+// Fetch posts with the specified tag (client-side filter for compatibility)
 const { data: posts } = await useAsyncData(`tag-${tag}`, async () => {
-  const result = await queryCollection('blog')
-    // .where('tag', 'IN', 'tags')
-    .all();
-    // console.log('DEBUG posts with tag:', tag, result);
-  return result;
-});
+  try {
+    const all = await queryCollection('blog').all() || []
+    const filtered = all.filter(p => (p.tags || []).includes(tag))
+    // sort by publishedAt desc
+    filtered.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    return filtered
+  } catch (err) {
+    console.warn('Failed to load posts for tag', tag, err)
+    return []
+  }
+})
 
 // SEO
 useSeoMeta({
