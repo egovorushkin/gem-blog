@@ -64,7 +64,7 @@ const { data: posts } = await useAsyncData('blog', async () => {
   .order('publishedAt', 'DESC')
   .limit(6)
   .all();
-  console.log('DEBUG blog posts:', result);
+  // console.log('DEBUG blog posts:', result);
   return result;
 })
 
