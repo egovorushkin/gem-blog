@@ -59,7 +59,7 @@ const { data: posts } = await useAsyncData(`tag-${tag}`, async () => {
   const result = await queryCollection('blog')
     // .where('tag', 'IN', 'tags')
     .all();
-    console.log('DEBUG posts with tag:', tag, result);
+    // console.log('DEBUG posts with tag:', tag, result);
   return result;
 });
 

@@ -48,7 +48,7 @@
 
       <!-- View All Button -->
       <div class="text-center mt-12" v-if="posts && posts.length >= 6">
-        <UButton size="lg" variant="outline" color="indigo">
+        <UButton to="/blog" size="lg" variant="outline" color="neutral">
           View All Posts
         </UButton>
       </div>
@@ -60,7 +60,10 @@
 // Fetch blog posts with error handling
 
 const { data: posts } = await useAsyncData('blog', async () => {
-  const result = await queryCollection('blog').all();
+  const result = await queryCollection('blog')
+  .order('publishedAt', 'DESC')
+  .limit(6)
+  .all();
   console.log('DEBUG blog posts:', result);
   return result;
 })

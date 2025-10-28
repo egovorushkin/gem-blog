@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
+  
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
@@ -10,23 +10,63 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui'
-  ],
+  ],  
   // ui: {
   //   prefix: 'Nuxt'
   // }
-  // content: {
-  //   build: {
-  //     markdown: {
-  //       highlight: {
-  //         theme: {
-  //           default: 'github-light',
-  //           dark: 'github-dark'
-  //         },
-  //         preload: ['java', 'javascript', 'typescript', 'bash', 'json', 'xml', 'sql']
-  //       }
-  //     }
-  //   }
-  // },
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          // Theme configuration
+          theme: {
+            default: 'catppuccin-latte',
+            dark: 'catppuccin-frappe',
+            // Alternative beautiful themes:
+            // default: 'vitesse-light',
+            // dark: 'vitesse-dark',
+            // default: 'min-light',
+            // dark: 'min-dark',
+          },
+
+          // Preload languages for better performance
+          preload: [
+            'java',
+            'javascript',
+            'typescript',
+            'bash',
+            'shell',
+            'json',
+            'xml',
+            'sql',
+            'yaml',
+            'dockerfile',
+            'python',
+            'go', 
+            'vue',
+            'html',
+            'css',
+            'scss',
+            'markdown'
+          ],
+
+          // Additional Shiki options
+          langs: [
+            // You can add custom language definitions here
+            'java',
+            'js',
+            'ts',
+            'vue',
+            'bash',
+            'json',
+            'yaml',
+            'dockerfile',
+            'sql'
+          ]
+        },
+      }
+    },
+  },
   css: ['~/assets/css/main.css'],
   app: {
     head: {

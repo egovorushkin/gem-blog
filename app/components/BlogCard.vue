@@ -27,9 +27,9 @@
         <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
           <div class="flex items-center space-x-2">
             <UIcon name="i-heroicons-calendar-days" class="w-4 h-4" />
-            <time :datetime="post.meta.publishedAt">
-              {{ formatDate(post.meta.publishedAt) }}
-            </time>
+                <time :datetime="post.publishedAt">
+                  {{ formatDate(post.publishedAt) }}
+                </time>
           </div>
           <div class="flex items-center space-x-2">
             <UIcon name="i-heroicons-clock" class="w-4 h-4" />

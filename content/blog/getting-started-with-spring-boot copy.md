@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Spring Boot: A Comprehensive Guide"
 description: "Learn the fundamentals of Spring Boot and how to build your first REST API with this powerful Java framework."
-publishedAt: "2024-01-15"
+publishedAt: "2025-01-15"
 tags: ['java', 'pring', 'spring-boot', 'rest-api']
 readTime: "8 min read"
 ---

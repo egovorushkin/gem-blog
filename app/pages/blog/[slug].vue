@@ -27,8 +27,8 @@
             <div class="flex items-center space-x-4">
               <div class="flex items-center space-x-2">
                 <UIcon name="i-heroicons-calendar-days" class="w-4 h-4" />
-                <time :datetime="data.meta.publishedAt">
-                  {{ formatDate(data.meta.publishedAt) }}
+                <time :datetime="data.publishedAt">
+                  {{ formatDate(data.publishedAt) }}
                 </time>
               </div>
               <div class="flex items-center space-x-2">
@@ -123,10 +123,10 @@ console.log('DEBUG slug:', slug, 'postPath:', postPath)
 const { data } = await useAsyncData(`content-${postPath}`, async () => {
   try {
     const result = await queryCollection('blog').path(postPath).first();
-    console.log('DEBUG current post:', result)
+    // console.log('DEBUG current post:', result)
     return result
   } catch (err) {
-    console.error('ERROR fetching post:', err)
+    // console.error('ERROR fetching post:', err)
     return null
   }
 })
