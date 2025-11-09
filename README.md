@@ -1,75 +1,19 @@
-# Nuxt Minimal Starter
+# Personal blog
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c8a8ff21-c852-4cf3-9576-8060c2c25bb3/deploy-status)](https://app.netlify.com/projects/egovorushkin/deploys&branch=main)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is the source code for my personal blog, where I share my thoughts, experiences, and projects related to technology, programming, and other interests.
+## Features
+- Clean and responsive design
+- Markdown support for easy content creation
+- Syntax highlighting for code snippets
+- Tagging and categorization of posts
 
-## Setup
+## Technologies Used
+- Nuxt.js v4 for the frontend
+- Content module for managing blog posts
+- Tailwind CSS for styling
+- Shiki for syntax highlighting
+- Git for version control
+- Hosting on Netlify
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Blog available at: [https://egovorushkin.dev](https://egovorushkin.dev)
