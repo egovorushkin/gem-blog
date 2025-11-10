@@ -4,14 +4,16 @@
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
         About Me
       </h1>
-      <div class="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto mb-6 flex items-center justify-center">
+      <div
+        class="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto mb-6 flex items-center justify-center">
         <UIcon name="i-heroicons-user" class="w-16 h-16 text-white" />
       </div>
     </div>
 
     <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert">
       <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-8">
-        Passionate Java developer sharing knowledge about software engineering, best practices, and modern development techniques.
+        Passionate Java developer sharing knowledge about software engineering, best practices, and modern development
+        techniques.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -50,14 +52,14 @@
 
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">My Journey</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-4">
-        I started my journey in software development with a passion for problem-solving and clean code. 
-        Over the years, I've worked on various projects ranging from small applications to large-scale 
+        I started my journey in software development with a passion for problem-solving and clean code.
+        Over the years, I've worked on various projects ranging from small applications to large-scale
         enterprise systems.
       </p>
-      
+
       <p class="text-gray-600 dark:text-gray-300 mb-4">
-        This blog is my way of giving back to the developer community by sharing the knowledge and 
-        experiences I've gained throughout my career. I believe in continuous learning and staying 
+        This blog is my way of giving back to the developer community by sharing the knowledge and
+        experiences I've gained throughout my career. I believe in continuous learning and staying
         updated with the latest trends in technology.
       </p>
 
@@ -83,14 +85,17 @@
       <div class="text-center">
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Let's Connect</h3>
         <div class="flex justify-center space-x-4">
-          <UButton icon="i-simple-icons-github" variant="outline" color="gray" size="lg">
+          <UButton icon="i-simple-icons-github" variant="outline" color="gray" size="lg"
+            to="https://github.com/egovorushkin" target="_blank">
             GitHub
           </UButton>
-          <UButton icon="i-simple-icons-linkedin" variant="outline" color="blue" size="lg">
+          <UButton icon="i-simple-icons-linkedin" variant="outline" color="blue" size="lg"
+            to="https://www.linkedin.com/in/evgenii-govorushkin/" target="_blank">
             LinkedIn
           </UButton>
-          <UButton icon="i-simple-icons-twitter" variant="outline" color="sky" size="lg">
-            Twitter
+          <UButton icon="i-simple-icons-x" variant="outline" color="sky" size="lg" to="https://x.com/evgenii_swe"
+            target="_blank" >
+            X (Twitter)
           </UButton>
         </div>
       </div>

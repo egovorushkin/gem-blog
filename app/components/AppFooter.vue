@@ -12,9 +12,9 @@
             Sharing insights about Java development, software engineering best practices, and the latest in tech.
           </p>
           <div class="flex space-x-4">
-            <UButton icon="i-simple-icons-github" variant="ghost" color="gray" />
-            <UButton icon="i-simple-icons-linkedin" variant="ghost" color="gray" />
-            <UButton icon="i-simple-icons-twitter" variant="ghost" color="gray" />
+            <UButton icon="i-simple-icons-github" variant="ghost" color="gray" to="https://github.com/egovorushkin" target="_blank"/>
+            <UButton icon="i-simple-icons-linkedin" variant="ghost" color="gray" to="https://www.linkedin.com/in/evgenii-govorushkin/" target="_blank"/>
+            <UButton icon="i-simple-icons-x" variant="ghost" color="gray" to="https://x.com/evgenii_swe" target="_blank"/>
           </div>
         </div>
 
