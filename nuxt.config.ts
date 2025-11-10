@@ -9,8 +9,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui'
-  ],  
+    '@nuxt/ui',
+    'nuxt-gtag'
+  ],
+  gtag: {
+    id: 'G-EFCLZ9Y3VQ'
+  },  
   // ui: {
   //   prefix: 'Nuxt'
   // }
@@ -77,7 +81,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'A personal tech blog sharing insights about Java development and software engineering best practices.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/icon2.ico' }
       ]
     }
   }
