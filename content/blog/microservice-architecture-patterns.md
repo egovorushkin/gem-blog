@@ -3,7 +3,6 @@ title: "Microservices Architecture Patterns: A Practical Guide"
 description: "Explore essential microservices patterns and learn how to design scalable, maintainable distributed systems."
 publishedAt: "2025-01-05"
 tags: ['architecture', 'microservices', 'distributed-systems', 'design-patterns']
-readTime: "15 min read"
 ---
 
 # Microservices Architecture Patterns: A Practical Guide

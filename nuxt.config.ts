@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  
+
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
@@ -14,13 +14,20 @@ export default defineNuxtConfig({
   ],
   gtag: {
     id: 'G-EFCLZ9Y3VQ'
-  },  
+  },
   // ui: {
   //   prefix: 'Nuxt'
   // }
   content: {
     build: {
       markdown: {
+        remarkPlugins: {
+          'remark-reading-time': {},
+        },
+        // toc: {
+        //   depth: 3,
+        //   searchDepth: 4,
+        // },
         highlight: {
           // Theme configuration
           theme: {
@@ -46,7 +53,7 @@ export default defineNuxtConfig({
             'yaml',
             'dockerfile',
             'python',
-            'go', 
+            'go',
             'vue',
             'html',
             'css',
@@ -81,7 +88,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'A personal tech blog sharing insights about Java development and software engineering best practices.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/icon2.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   }

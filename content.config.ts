@@ -11,8 +11,11 @@ export default defineContentConfig({
         description: z.string().min(10),
         publishedAt: z.date(),
         tags: z.array(z.string()),
-        image: z.string(),
+        image: z.string().optional(),
         author: z.string().optional(),
+        readingTime: z.object({
+          text: z.string()
+        }).optional()
       })
     })
   }

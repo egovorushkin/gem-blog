@@ -1,7 +1,7 @@
 # Copilot Instructions for gem-blog
 
 ## Project Overview
-- This is a Nuxt 3 blog project using TypeScript, with content-driven pages and a minimal starter template.
+- This is a Nuxt veriosn 4 blog project using TypeScript, with content-driven pages and a minimal starter template.
 - Blog content is stored in `content/blog/` as markdown files. Each file represents a blog post and must have frontmatter (title, description, publishedAt, tags).
 - The app structure follows Nuxt conventions: `pages/` for routes, `components/` for reusable UI, and `app.vue` as the root entry.
 
@@ -38,4 +38,4 @@
 
 ## References
 - See `README.md` for setup and build commands.
-- See Nuxt docs: https://nuxt.com/docs/getting-started/introduction
+- See Nuxt docs: https://nuxt.com/docs/4.x/getting-started/introduction

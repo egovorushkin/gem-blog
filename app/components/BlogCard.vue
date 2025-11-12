@@ -33,7 +33,7 @@
           </div>
           <div class="flex items-center space-x-2">
             <UIcon name="i-heroicons-clock" class="w-4 h-4" />
-            <span>{{ post.meta.readTime || '5 min read' }}</span>
+            <span>{{ post.readingTime.text || '10 min read' }}</span>
           </div>
         </div>
       </div>

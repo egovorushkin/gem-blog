@@ -3,12 +3,8 @@ title: 'Git Branching Strategies: How Big Tech Companies Scale Development'
 description: 'Explore the Git branching strategies used by Google, Microsoft, Meta, and other tech giants to manage massive codebases and coordinate thousands of developers.'
 publishedAt: '2025-01-21'
 tags: ['Git', 'DevOps', 'Software Engineering', 'Team Management', 'Best Practices']
-image: '/images/git-branching-tech.jpg'
-author: 'Your Name'
-readTime: '8 min read'
+image: 'git-branching-strategies.jpg'
 ---
-
-# Git Branching Strategies: How Big Tech Companies Scale Development
 
 Managing code across thousands of developers is one of the biggest challenges in modern software development. Big tech companies like Google, Microsoft, Meta, and Netflix have evolved sophisticated Git branching strategies that enable rapid development while maintaining code quality and system stability.
 

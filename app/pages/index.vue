@@ -27,12 +27,43 @@
       </div>
 
       <!-- Blog Posts Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" v-if="posts && posts.length > 0">
-        <BlogCard 
-          v-for="post in posts" 
-          :key="post.path" 
-          :post="post" 
-        />
+      <div v-if="posts && posts.length > 0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <BlogCard 
+            v-for="post in posts" 
+            :key="post.path" 
+            :post="post" 
+          />
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex flex-wrap justify-center items-center gap-2 mt-10">
+          <UButton
+            :disabled="page === 1"
+            @click="goToPage(page - 1)"
+            size="sm"
+            variant="outline"
+            color="grey"
+          >Prev</UButton>
+
+          <template v-for="p in totalPages" :key="p">
+            <UButton
+              :variant="p === page ? 'solid' : 'outline'"
+              :color="p === page ? 'primary' : 'neutral'"
+              size="sm"
+              @click="goToPage(p)"
+              :disabled="p === page"
+            >{{ p }}</UButton>
+          </template>
+
+          <UButton
+            :disabled="page === totalPages"
+            @click="goToPage(page + 1)"
+            size="sm"
+            variant="outline"
+            color="neutral"
+          >Next</UButton>
+        </div>
       </div>
 
       <!-- Empty State -->
@@ -57,28 +88,35 @@
 </template>
 
 <script setup lang="ts">
-// Fetch blog posts with error handling
+import { ref, computed } from 'vue'
 
-const { data: posts } = await useAsyncData('blog', async () => {
-  const result = await queryCollection('blog')
-  .order('publishedAt', 'DESC')
-  .limit(6)
-  .all();
-  // console.log('DEBUG blog posts:', result);
-  return result;
+const PAGE_SIZE = 6
+const page = ref(1)
+
+const { data: totalCount } = await useAsyncData('blog-count', async () => {
+  // Get total count of posts for pagination
+  const all = await queryCollection('blog').all()
+  return all.length
 })
 
-// Ensure posts is always an array
-const safePosts = computed(() => posts.value || [])
+const { data: posts } = await useAsyncData(() => `blog-page-${page.value}`, async () => {
+  // Use new Nuxt Content v4 API for paginated fetch
+  return await queryCollection('blog')
+    .order('publishedAt', 'DESC')
+    .limit(PAGE_SIZE)
+    .skip((page.value - 1) * PAGE_SIZE)
+    .all() || []
+})
 
-// SEO
+const totalPages = computed(() => Math.ceil((totalCount.value || 0) / PAGE_SIZE))
+
+function goToPage(p: number) {
+  if (p < 1 || p > totalPages.value) return
+  page.value = p
+}
+
 useSeoMeta({
   title: 'Home',
   description: 'A personal tech blog sharing insights about Java development and software engineering best practices.'
 })
-
-
-function queryContent(arg0: string) {
-  throw new Error('Function not implemented.')
-}
 </script>

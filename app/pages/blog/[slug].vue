@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="data">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
         <!-- TOC: visible on large screens -->
         <aside class="hidden lg:block">
           <nav class="sticky top-24 max-h-screen overflow-auto pr-4">
@@ -20,13 +20,9 @@
           <!-- Article Header -->
           <header class="mb-12">
             <div class="flex flex-wrap gap-2 mb-4">
-              <NuxtLink
-                v-for="tag in data.tags"
-                :key="tag"
-                :to="`/tags/${tag}`"
-                class="group"
-              >
-                <UBadge variant="soft" color="indigo" class="group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20">
+              <NuxtLink v-for="tag in data.tags" :key="tag" :to="`/tags/${tag}`" class="group">
+                <UBadge variant="soft" color="indigo"
+                  class="group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20">
                   {{ tag }}
                 </UBadge>
               </NuxtLink>
@@ -40,7 +36,8 @@
               {{ data.description }}
             </p>
 
-            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-6">
+            <div
+              class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-6">
               <div class="flex items-center space-x-4">
                 <div class="flex items-center space-x-2">
                   <UIcon name="i-heroicons-calendar-days" class="w-4 h-4" />
@@ -50,7 +47,7 @@
                 </div>
                 <div class="flex items-center space-x-2">
                   <UIcon name="i-heroicons-clock" class="w-4 h-4" />
-                  <span>{{ data.readTime || '5 min read' }}</span>
+                  <span>{{ data.readingTime.text || '10 min read' }}</span>
                 </div>
               </div>
             </div>
@@ -66,12 +63,8 @@
             <div class="flex items-center justify-between">
               <div class="flex flex-wrap gap-2">
                 <span class="text-sm text-gray-600 dark:text-gray-400">Tags:</span>
-                <NuxtLink
-                  v-for="tag in data.tags"
-                  :key="tag"
-                  :to="`/tags/${tag}`"
-                  class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200"
-                >
+                <NuxtLink v-for="tag in data.tags" :key="tag" :to="`/tags/${tag}`"
+                  class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">
                   #{{ tag }}
                 </NuxtLink>
               </div>
@@ -84,10 +77,8 @@
       <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="flex justify-between">
           <div v-if="prev">
-            <NuxtLink
-              :to="prev.path"
-              class="group flex items-center space-x-3 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200"
-            >
+            <NuxtLink :to="prev.path"
+              class="group flex items-center space-x-3 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">
               <UIcon name="i-heroicons-arrow-left" class="w-4 h-4" />
               <div>
                 <div class="text-sm text-gray-600 dark:text-gray-400">Previous</div>
@@ -97,10 +88,8 @@
           </div>
 
           <div v-if="next" class="text-right">
-            <NuxtLink
-              :to="next.path"
-              class="group flex items-center space-x-3 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200"
-            >
+            <NuxtLink :to="next.path"
+              class="group flex items-center space-x-3 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">
               <div>
                 <div class="text-sm text-gray-600 dark:text-gray-400">Next</div>
                 <div class="font-medium">{{ next.title }}</div>
@@ -117,7 +106,8 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <UIcon name="i-heroicons-document-text" class="w-16 h-16 text-gray-400 mx-auto mb-4" />
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Post Not Found</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">The blog post you're looking for doesn't exist or has been moved.</p>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">The blog post you're looking for doesn't exist or has
+          been moved.</p>
         <UButton to="/blog" color="indigo">Back to Blog</UButton>
       </div>
     </template>
@@ -166,7 +156,8 @@ onMounted(() => {
   const el = contentRef.value
   if (!el) return
   toc.value = []
-  const headings = el.querySelectorAll('h2, h3')
+  // TODO: design a better way to extract headings
+  const headings = el.querySelectorAll('h2, h3, h4, h5, h6')
   const slugify = (text) => text.toString().toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-')
   headings.forEach(h => {
     let id = h.id

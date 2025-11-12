@@ -3,7 +3,6 @@ title: "Page For Testing Different Content"
 description: "Test different content types"
 publishedAt: "2025-10-24"
 tags: ['content', 'mermaid','code highlight']
-readTime: "10 min read"
 ---
 
 # 1. Mermaid
