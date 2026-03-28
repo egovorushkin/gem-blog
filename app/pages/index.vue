@@ -9,8 +9,8 @@
         <p class="text-xl md:text-2xl mb-8 text-indigo-100 max-w-3xl mx-auto">
           Exploring Java development, software architecture, and modern engineering practices
         </p>
-        <UButton size="xl" color="neutral" variant="solid" to="/about">
-          Learn More About Me
+        <UButton size="xl" color="neutral" variant="solid" to="/blog">
+          Browse Posts
         </UButton>
       </div>
     </section>

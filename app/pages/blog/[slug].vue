@@ -19,6 +19,10 @@
         <article>
           <!-- Article Header -->
           <header class="mb-12">
+            <div v-if="data.image" class="w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
+              <NuxtImg :src="data.image" :alt="data.title" class="w-full h-full object-cover" />
+            </div>
+
             <div class="flex flex-wrap gap-2 mb-4">
               <NuxtLink v-for="tag in data.tags" :key="tag" :to="`/tags/${tag}`" class="group">
                 <UBadge variant="soft" color="indigo"

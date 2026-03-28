@@ -11,19 +11,15 @@
 
     <!-- Tag Cloud -->
     <div class="flex flex-wrap gap-3 justify-center mb-12" v-if="tags.length">
-      <NuxtLink 
-        v-for="tag in tags" 
+      <NuxtLink
+        v-for="tag in tags"
         :key="tag.name"
         :to="`/tags/${tag.name}`"
         class="group"
       >
-        <UBadge 
-          :label="`${tag.name} (${tag.count})`"
-          variant="outline"
-          color="indigo"
-          size="lg"
-          class="group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20 transition-colors"
-        />
+        <span :class="[tagSizeClass(tag.count), 'inline-flex items-center rounded-full border-2 border-indigo-500 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 font-medium group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20 transition-colors']">
+          {{ tag.name }} <span class="ml-1.5 opacity-60">({{ tag.count }})</span>
+        </span>
       </NuxtLink>
     </div>
 
@@ -40,7 +36,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // Fetch all posts and compute tag frequencies (Nuxt Content v4)
 const { data: posts } = await useAsyncData('all-posts', async () => {
   try {
@@ -50,6 +46,12 @@ const { data: posts } = await useAsyncData('all-posts', async () => {
     return []
   }
 })
+
+function tagSizeClass(count: number) {
+  if (count >= 4) return 'text-lg px-4 py-1.5'
+  if (count >= 2) return 'text-sm px-3 py-1'
+  return 'text-xs px-2 py-0.5'
+}
 
 // Calculate tag frequencies
 const tags = computed(() => {
@@ -62,7 +64,7 @@ const tags = computed(() => {
   })
 
   return Object.entries(tagCounts)
-    .map(([name, count]) => ({ name, count }))
+    .map(([name, count]) => ({ name, count: count as number }))
     .sort((a, b) => b.count - a.count)
 })
 

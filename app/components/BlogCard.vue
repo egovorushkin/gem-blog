@@ -1,6 +1,10 @@
 <template>
   <article class="blog-card bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
     <NuxtLink :to="post.path" class="block">
+      <div class="h-40 overflow-hidden">
+        <NuxtImg v-if="post.image" :src="post.image" :alt="post.title" class="w-full h-full object-cover" />
+        <div v-else class="w-full h-full bg-linear-to-br from-indigo-500 to-purple-600" />
+      </div>
       <div class="p-6">
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-3">

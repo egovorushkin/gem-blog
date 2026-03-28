@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 /* Custom styles for the blog */
 .prose {
   @apply max-w-none;
@@ -18,8 +22,8 @@
   @apply bg-transparent p-0;
 }
 
-/* Smooth transitions */
-* {
+/* Smooth transitions on interactive elements only */
+a, button, input, textarea {
   @apply transition-colors duration-200;
 }
 
@@ -36,7 +40,7 @@ a {
 
 /* Card hover effects */
 .blog-card {
-  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
 }
 
 .prose h1 {
