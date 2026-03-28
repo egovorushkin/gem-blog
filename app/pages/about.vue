@@ -108,4 +108,7 @@ useSeoMeta({
   title: 'About',
   description: 'Learn more about my background as a Java developer and my passion for software engineering.'
 })
+
+const config = useRuntimeConfig()
+useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/about` }] })
 </script>

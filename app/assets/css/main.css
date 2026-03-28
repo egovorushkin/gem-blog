@@ -23,6 +23,12 @@
   @apply transition-colors duration-200;
 }
 
+/* Ensure interactive elements show pointer cursor */
+button:not([disabled]),
+a {
+  cursor: pointer;
+}
+
 /* Hero gradient */
 .hero-gradient {
   background: linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(139, 92, 246) 100%);

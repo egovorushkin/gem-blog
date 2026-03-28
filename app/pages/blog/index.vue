@@ -40,7 +40,8 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
+import { watchDebounced } from '@vueuse/core'
 
 const route = useRoute()
 const router = useRouter()
@@ -50,10 +51,10 @@ const showList = computed(() => route.query.view === 'list')
 // search term synced to query param `q`
 const searchTerm = ref((route.query.q as string) || '')
 
-watch(searchTerm, (val) => {
+watchDebounced(searchTerm, (val) => {
   // update URL query to keep navigation state
   router.replace({ query: { ...(route.query as any), q: val || undefined } })
-})
+}, { debounce: 300 })
 
 const { data: posts } = await useAsyncData('all-posts', async () => {
   // fetch posts once; render either cards or list client-side based on query
@@ -88,4 +89,7 @@ useSeoMeta({
   title: 'Blog',
   description: 'Browse all blog posts and tutorials.'
 })
+
+const config = useRuntimeConfig()
+useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/blog` }] })
 </script>

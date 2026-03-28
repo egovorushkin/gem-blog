@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://gem-blog.netlify.app'
+    }
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',

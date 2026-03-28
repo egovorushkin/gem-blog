@@ -9,7 +9,7 @@
         <p class="text-xl md:text-2xl mb-8 text-indigo-100 max-w-3xl mx-auto">
           Exploring Java development, software architecture, and modern engineering practices
         </p>
-        <UButton size="xl" color="white" variant="solid" to="/about">
+        <UButton size="xl" color="neutral" variant="solid" to="/about">
           Learn More About Me
         </UButton>
       </div>
@@ -43,13 +43,13 @@
             @click="goToPage(page - 1)"
             size="sm"
             variant="outline"
-            color="grey"
+            color="primary"
           >Prev</UButton>
 
           <template v-for="p in totalPages" :key="p">
             <UButton
               :variant="p === page ? 'solid' : 'outline'"
-              :color="p === page ? 'primary' : 'neutral'"
+              color="primary"
               size="sm"
               @click="goToPage(p)"
               :disabled="p === page"
@@ -61,7 +61,7 @@
             @click="goToPage(page + 1)"
             size="sm"
             variant="outline"
-            color="neutral"
+            color="primary"
           >Next</UButton>
         </div>
       </div>
@@ -119,4 +119,7 @@ useSeoMeta({
   title: 'Home',
   description: 'A personal tech blog sharing insights about Java development and software engineering best practices.'
 })
+
+const config = useRuntimeConfig()
+useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/` }] })
 </script>

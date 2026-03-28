@@ -71,4 +71,7 @@ useSeoMeta({
   title: 'Tags',
   description: 'Browse blog posts by tags and categories. Find articles about Java, Spring Boot, microservices, and more.'
 })
+
+const config = useRuntimeConfig()
+useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/tags` }] })
 </script>

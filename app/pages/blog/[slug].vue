@@ -120,16 +120,13 @@ import { ref, onMounted } from 'vue'
 const route = useRoute()
 const slug = route.params.slug
 const postPath = `/blog/${slug}`
-console.log('DEBUG slug:', slug, 'postPath:', postPath)
 
 // Fetch the current post
 const { data } = await useAsyncData(`content-${postPath}`, async () => {
   try {
     const result = await queryCollection('blog').path(postPath).first();
-    // console.log('DEBUG current post:', result)
     return result
   } catch (err) {
-    // console.error('ERROR fetching post:', err)
     return null
   }
 })
@@ -185,5 +182,23 @@ useSeoMeta({
   ogType: 'article',
   articlePublishedTime: data.value?.publishedAt,
   articleTag: data.value?.tags
+})
+
+const config = useRuntimeConfig()
+useHead({
+  link: [{ rel: 'canonical', href: `${config.public.siteUrl}/blog/${slug}` }],
+  script: data.value ? [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: data.value.title,
+      description: data.value.description,
+      datePublished: data.value.publishedAt,
+      keywords: data.value.tags?.join(', '),
+      author: { '@type': 'Person', name: 'Evgenii' },
+      url: `${config.public.siteUrl}/blog/${slug}`
+    })
+  }] : []
 })
 </script>

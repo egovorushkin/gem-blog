@@ -14,7 +14,6 @@
 useSeoMeta({
   titleTemplate: '%s | TechBlog',
   description: 'A personal tech blog sharing insights about Java development and software engineering best practices.',
-  ogImage: '/og-image.jpg',
   twitterCard: 'summary_large_image'
 })
 </script>

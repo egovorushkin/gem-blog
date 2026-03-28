@@ -5,7 +5,7 @@
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-3">
           <UBadge 
-            v-for="tag in post.meta.tags" 
+            v-for="tag in post.tags"
             :key="tag" 
             variant="soft" 
             color="indigo"
