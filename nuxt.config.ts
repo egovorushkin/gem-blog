@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://gem-blog.netlify.app'
+      siteUrl: 'https://egovorushkin.dev'
     }
   },
 
