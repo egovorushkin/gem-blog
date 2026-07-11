@@ -67,7 +67,7 @@
           </header>
 
           <!-- Article Content -->
-          <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert">
+          <div class="prose prose-lg prose-indigo dark:prose-invert">
             <ContentRenderer :value="data" />
           </div>
 

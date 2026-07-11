@@ -5,8 +5,6 @@ publishedAt: '2025-01-10'
 tags: ['java', 'performance', 'optimization', 'jvm']
 ---
 
-# Java Performance Optimization: Best Practices and Common Pitfalls
-
 Performance optimization is a critical aspect of Java development, especially for enterprise applications handling high loads. In this comprehensive guide, we'll explore proven techniques to optimize your Java applications and avoid common performance pitfalls.
 
 ## Understanding Java Performance Fundamentals

@@ -5,8 +5,6 @@ publishedAt: "2025-01-15"
 tags: ['java', 'spring', 'spring-boot', 'rest-api']
 ---
 
-# Getting Started with Spring Boot: A Comprehensive Guide
-
 Spring Boot has revolutionized Java development by simplifying the creation of production-ready applications. In this comprehensive guide, we'll explore the fundamentals of Spring Boot and build a complete REST API from scratch.
 
 ## What is Spring Boot?

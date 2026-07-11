@@ -7,7 +7,7 @@
       <Avatar wrapper-class="w-32 h-32 mx-auto mb-6" icon-class="w-16 h-16 text-white" />
     </div>
 
-    <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert">
+    <div class="prose prose-lg prose-indigo dark:prose-invert">
       <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-8">
         Software engineer sharing knowledge about backend engineering, architecture, and the side projects I build along the way.
       </p>
