@@ -3,14 +3,21 @@
     <template v-if="data">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
         <!-- TOC: visible on large screens -->
-        <aside class="hidden lg:block">
+        <aside v-if="toc.length" class="hidden lg:block">
           <nav class="sticky top-24 max-h-screen overflow-auto pr-4">
             <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">On this page</h3>
             <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li v-for="item in toc" :key="item.id">
                 <a :href="`#${item.id}`" class="block hover:text-indigo-600 dark:hover:text-indigo-300">
-                  <span :class="item.level === 3 ? 'pl-4' : ''">{{ item.text }}</span>
+                  {{ item.text }}
                 </a>
+                <ul v-if="item.children?.length" class="mt-2 space-y-2 pl-4">
+                  <li v-for="child in item.children" :key="child.id">
+                    <a :href="`#${child.id}`" class="block hover:text-indigo-600 dark:hover:text-indigo-300">
+                      {{ child.text }}
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </nav>
@@ -59,7 +66,7 @@
           </header>
 
           <!-- Article Content -->
-          <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert" ref="contentRef">
+          <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert">
             <ContentRenderer :value="data" />
           </div>
 
@@ -120,8 +127,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
 const route = useRoute()
 const slug = route.params.slug
 const postPath = `/blog/${slug}`
@@ -150,33 +155,8 @@ const formatDate = (date) => {
   })
 }
 
-// Table of Contents (client-side extraction)
-const contentRef = ref(null)
-const toc = ref([])
-
-onMounted(() => {
-  const el = contentRef.value
-  if (!el) return
-  toc.value = []
-  // TODO: design a better way to extract headings
-  const headings = el.querySelectorAll('h2, h3, h4, h5, h6')
-  const slugify = (text) => text.toString().toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-')
-  headings.forEach(h => {
-    let id = h.id
-    if (!id) {
-      id = slugify(h.textContent || '')
-      // ensure unique
-      let suffix = 0
-      const base = id
-      while (document.getElementById(id)) {
-        suffix++
-        id = `${base}-${suffix}`
-      }
-      h.id = id
-    }
-    toc.value.push({ id, text: (h.textContent || '').trim(), level: Number(h.tagName.slice(1)) })
-  })
-})
+// Table of Contents (SSR'd by Nuxt Content's markdown toc pipeline)
+const toc = computed(() => data.value?.body?.toc?.links || [])
 
 // SEO
 useSeoMeta({

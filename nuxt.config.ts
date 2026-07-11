@@ -30,10 +30,10 @@ export default defineNuxtConfig({
         remarkPlugins: {
           'remark-reading-time': {},
         },
-        // toc: {
-        //   depth: 3,
-        //   searchDepth: 4,
-        // },
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
         highlight: {
           // Theme configuration
           theme: {

@@ -12,18 +12,37 @@
       <SearchBar v-model="searchTerm" />
     </div>
     <div v-if="filteredPosts && filteredPosts.length">
-      <!-- List view when ?view=list is present -->
-      <ul v-if="showList" class="space-y-4">
-        <li v-for="post in filteredPosts" :key="post.path" class="py-3 border-b border-gray-100 dark:border-gray-800">
-          <NuxtLink :to="getPostPath(post)" class="text-lg font-medium text-indigo-600 dark:text-indigo-400 hover:underline">{{ post.title }}</NuxtLink>
-          <div class="text-sm text-gray-600 dark:text-gray-400">{{ formatDate(post.publishedAt) }}</div>
-          <p class="text-gray-700 dark:text-gray-300 mt-1">{{ post.description }}</p>
-        </li>
-      </ul>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <BlogCard v-for="post in paginatedPosts" :key="post.path" :post="post" />
+      </div>
 
-      <!-- Card grid (default) -->
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <BlogCard v-for="post in filteredPosts" :key="post.path" :post="post" />
+      <!-- Pagination Controls -->
+      <div v-if="totalPages > 1" class="flex flex-wrap justify-center items-center gap-2 mt-10">
+        <UButton
+          :disabled="page === 1"
+          size="sm"
+          variant="outline"
+          color="primary"
+          @click="goToPage(page - 1)"
+        >Prev</UButton>
+
+        <template v-for="p in totalPages" :key="p">
+          <UButton
+            :variant="p === page ? 'solid' : 'outline'"
+            color="primary"
+            size="sm"
+            :disabled="p === page"
+            @click="goToPage(p)"
+          >{{ p }}</UButton>
+        </template>
+
+        <UButton
+          :disabled="page === totalPages"
+          size="sm"
+          variant="outline"
+          color="primary"
+          @click="goToPage(page + 1)"
+        >Next</UButton>
       </div>
     </div>
     <div v-else class="text-center py-16">
@@ -40,13 +59,14 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { watchDebounced } from '@vueuse/core'
 
 const route = useRoute()
 const router = useRouter()
 
-const showList = computed(() => route.query.view === 'list')
+const PAGE_SIZE = 9
+const page = ref(1)
 
 // search term synced to query param `q`
 const searchTerm = ref((route.query.q as string) || '')
@@ -56,9 +76,12 @@ watchDebounced(searchTerm, (val) => {
   router.replace({ query: { ...(route.query as any), q: val || undefined } })
 }, { debounce: 300 })
 
+watch(searchTerm, () => {
+  page.value = 1
+})
+
 const { data: posts } = await useAsyncData('all-posts', async () => {
-  // fetch posts once; render either cards or list client-side based on query
-  return (await queryCollection('blog').all()) || []
+  return (await queryCollection('blog').order('publishedAt', 'DESC').all()) || []
 })
 
 const filteredPosts = computed(() => {
@@ -73,16 +96,16 @@ const filteredPosts = computed(() => {
   })
 })
 
-function getPostPath(post: any) {
-  return post.path || post._path || `/blog/${post.slug || ''}`
-}
+const totalPages = computed(() => Math.max(1, Math.ceil(filteredPosts.value.length / PAGE_SIZE)))
 
-function formatDate(d: string | number | Date) {
-  try {
-    return new Date(d).toLocaleDateString()
-  } catch (e) {
-    return String(d || '')
-  }
+const paginatedPosts = computed(() => {
+  const start = (page.value - 1) * PAGE_SIZE
+  return filteredPosts.value.slice(start, start + PAGE_SIZE)
+})
+
+function goToPage(p: number) {
+  if (p < 1 || p > totalPages.value) return
+  page.value = p
 }
 
 useSeoMeta({

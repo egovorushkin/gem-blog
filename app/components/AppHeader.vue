@@ -12,13 +12,13 @@
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-8">
-          <NuxtLink to="/" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
+          <NuxtLink to="/" :class="navLinkClass('/')">
             Home
           </NuxtLink>
-          <NuxtLink to="/about" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
+          <NuxtLink to="/about" :class="navLinkClass('/about')">
             About
           </NuxtLink>
-          <NuxtLink to="/tags" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
+          <NuxtLink to="/tags" :class="navLinkClass('/tags')">
             Tags
           </NuxtLink>
         </div>
@@ -33,39 +33,29 @@
               @click="$colorMode.preference = $colorMode.value === 'dark' ? 'light' : 'dark'"
             />
           </ClientOnly>
-          
+
           <!-- Mobile menu button -->
           <UButton
             icon="i-heroicons-bars-3"
             variant="ghost"
             class="md:hidden"
+            :aria-expanded="mobileMenuOpen"
+            aria-controls="mobile-nav"
             @click="mobileMenuOpen = !mobileMenuOpen"
           />
         </div>
       </div>
 
       <!-- Mobile Navigation -->
-      <div v-if="mobileMenuOpen" class="md:hidden">
+      <div v-if="mobileMenuOpen" id="mobile-nav" class="md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-          <NuxtLink 
-            to="/" 
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium"
-            @click="mobileMenuOpen = false"
-          >
+          <NuxtLink to="/" :class="['block px-3 py-2', navLinkClass('/')]">
             Home
           </NuxtLink>
-          <NuxtLink 
-            to="/about" 
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium"
-            @click="mobileMenuOpen = false"
-          >
+          <NuxtLink to="/about" :class="['block px-3 py-2', navLinkClass('/about')]">
             About
           </NuxtLink>
-          <NuxtLink 
-            to="/tags" 
-            class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium"
-            @click="mobileMenuOpen = false"
-          >
+          <NuxtLink to="/tags" :class="['block px-3 py-2', navLinkClass('/tags')]">
             Tags
           </NuxtLink>
         </div>
@@ -75,5 +65,22 @@
 </template>
 
 <script setup>
+const route = useRoute()
 const mobileMenuOpen = ref(false)
+
+function isActivePath(path) {
+  return path === '/' ? route.path === '/' : route.path.startsWith(path)
+}
+
+function navLinkClass(path) {
+  return [
+    'font-medium hover:text-indigo-600 dark:hover:text-indigo-400',
+    isActivePath(path) ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-700 dark:text-gray-300'
+  ]
+}
+
+// close the mobile drawer on any navigation, not just direct link clicks
+watch(() => route.fullPath, () => {
+  mobileMenuOpen.value = false
+})
 </script>

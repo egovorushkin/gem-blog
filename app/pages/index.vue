@@ -34,40 +34,11 @@
       <!-- Blog Posts Grid -->
       <div v-if="posts && posts.length > 0">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <BlogCard 
-            v-for="post in posts" 
-            :key="post.path" 
-            :post="post" 
+          <BlogCard
+            v-for="post in posts"
+            :key="post.path"
+            :post="post"
           />
-        </div>
-
-        <!-- Pagination Controls -->
-        <div class="flex flex-wrap justify-center items-center gap-2 mt-10">
-          <UButton
-            :disabled="page === 1"
-            @click="goToPage(page - 1)"
-            size="sm"
-            variant="outline"
-            color="primary"
-          >Prev</UButton>
-
-          <template v-for="p in totalPages" :key="p">
-            <UButton
-              :variant="p === page ? 'solid' : 'outline'"
-              color="primary"
-              size="sm"
-              @click="goToPage(p)"
-              :disabled="p === page"
-            >{{ p }}</UButton>
-          </template>
-
-          <UButton
-            :disabled="page === totalPages"
-            @click="goToPage(page + 1)"
-            size="sm"
-            variant="outline"
-            color="primary"
-          >Next</UButton>
         </div>
       </div>
 
@@ -83,8 +54,8 @@
       </div>
 
       <!-- View All Button -->
-      <div class="text-center mt-12" v-if="posts && posts.length >= 6">
-        <UButton to="/blog?view=list" size="lg" variant="outline" color="neutral">
+      <div class="text-center mt-12" v-if="hasMorePosts">
+        <UButton to="/blog" size="lg" variant="outline" color="neutral">
           View All Posts
         </UButton>
       </div>
@@ -93,32 +64,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 const PAGE_SIZE = 6
-const page = ref(1)
+
+const { data: posts } = await useAsyncData('home-latest-posts', async () => {
+  return await queryCollection('blog').order('publishedAt', 'DESC').limit(PAGE_SIZE).all() || []
+})
 
 const { data: totalCount } = await useAsyncData('blog-count', async () => {
-  // Get total count of posts for pagination
   const all = await queryCollection('blog').all()
   return all.length
 })
 
-const { data: posts } = await useAsyncData(() => `blog-page-${page.value}`, async () => {
-  // Use new Nuxt Content v4 API for paginated fetch
-  return await queryCollection('blog')
-    .order('publishedAt', 'DESC')
-    .limit(PAGE_SIZE)
-    .skip((page.value - 1) * PAGE_SIZE)
-    .all() || []
-})
-
-const totalPages = computed(() => Math.ceil((totalCount.value || 0) / PAGE_SIZE))
-
-function goToPage(p: number) {
-  if (p < 1 || p > totalPages.value) return
-  page.value = p
-}
+const hasMorePosts = computed(() => (totalCount.value || 0) > PAGE_SIZE)
 
 useSeoMeta({
   title: 'Home',
