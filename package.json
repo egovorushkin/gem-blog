@@ -19,6 +19,7 @@
     "@nuxt/ui": "^3.3.4",
     "@nuxtjs/sitemap": "^8.2.2",
     "@takumi-rs/core": "^2.0.0-rc.16",
+    "@takumi-rs/wasm": "^2.0.0-rc.16",
     "@unhead/vue": "^2.0.17",
     "eslint": "^9.36.0",
     "mermaid": "^11.12.0",
