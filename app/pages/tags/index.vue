@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 // Fetch all posts and compute tag frequencies (Nuxt Content v4)
-const { data: posts } = await useAsyncData('all-posts', async () => {
+const { data: posts } = await useAsyncData('tags-all-posts', async () => {
   try {
     return await queryCollection('blog').all() || []
   } catch (err) {

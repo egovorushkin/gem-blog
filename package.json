@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build && node scripts/fix-sqlite-wasm.mjs",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && node scripts/fix-sqlite-wasm.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
