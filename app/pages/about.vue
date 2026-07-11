@@ -102,9 +102,14 @@
 <script setup>
 useSeoMeta({
   title: 'About',
-  description: 'Learn more about my background as a Java developer and my passion for software engineering.'
+  description: 'Learn more about my background as a software engineer and my passion for backend engineering and side projects.'
 })
 
 const config = useRuntimeConfig()
 useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/about` }] })
+
+defineOgImage('Default', {
+  title: 'About Evgenii Govorushkin',
+  description: 'Software engineer sharing knowledge about backend engineering, architecture, and side projects.'
+})
 </script>

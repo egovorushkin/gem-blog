@@ -24,7 +24,20 @@
         </div>
 
         <!-- Theme Toggle and Mobile Menu -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 sm:space-x-4">
+          <UButton
+            icon="i-heroicons-magnifying-glass"
+            variant="ghost"
+            color="gray"
+            aria-label="Search posts"
+            @click="commandPaletteOpen = true"
+          >
+            <span class="hidden lg:flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+              <UKbd value="meta" />
+              <UKbd value="K" />
+            </span>
+          </UButton>
+
           <ClientOnly>
             <UButton
               :icon="$colorMode.value === 'dark' ? 'i-heroicons-sun' : 'i-heroicons-moon'"
@@ -67,6 +80,7 @@
 <script setup>
 const route = useRoute()
 const mobileMenuOpen = ref(false)
+const commandPaletteOpen = useCommandPalette()
 
 function isActivePath(path) {
   return path === '/' ? route.path === '/' : route.path.startsWith(path)

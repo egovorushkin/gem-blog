@@ -5,6 +5,9 @@
       <NuxtPage />
     </main>
     <AppFooter />
+    <ClientOnly>
+      <GlobalSearch />
+    </ClientOnly>
   </div>
 </template>
 

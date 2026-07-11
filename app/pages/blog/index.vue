@@ -115,4 +115,9 @@ useSeoMeta({
 
 const config = useRuntimeConfig()
 useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/blog` }] })
+
+defineOgImage('Default', {
+  title: 'Blog',
+  description: 'Browse all blog posts and tutorials.'
+})
 </script>

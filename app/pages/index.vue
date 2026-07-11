@@ -86,4 +86,9 @@ useSeoMeta({
 
 const config = useRuntimeConfig()
 useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/` }] })
+
+defineOgImage('Default', {
+  title: 'Evgenii Govorushkin',
+  description: 'Backend engineering, side projects, and the occasional deep dive.'
+})
 </script>

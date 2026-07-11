@@ -9,14 +9,22 @@ export default defineNuxtConfig({
     }
   },
 
+  site: {
+    url: 'https://egovorushkin.dev',
+    name: 'Evgenii Govorushkin'
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
+    '@nuxt/fonts',
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui',
-    'nuxt-gtag'
+    '@nuxtjs/sitemap',
+    'nuxt-gtag',
+    'nuxt-og-image'
   ],
   gtag: {
     id: 'G-EFCLZ9Y3VQ'
@@ -94,10 +102,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Backend engineering, side projects, and the occasional deep dive from a software engineer who builds things and writes about it.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   }

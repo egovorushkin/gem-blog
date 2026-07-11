@@ -76,4 +76,9 @@ useSeoMeta({
 
 const config = useRuntimeConfig()
 useHead({ link: [{ rel: 'canonical', href: `${config.public.siteUrl}/tags` }] })
+
+defineOgImage('Default', {
+  title: 'Tags',
+  description: 'Browse blog posts by tags and categories.'
+})
 </script>

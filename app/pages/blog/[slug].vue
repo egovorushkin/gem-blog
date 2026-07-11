@@ -1,6 +1,7 @@
 <template>
   <div>
     <template v-if="data">
+      <ReadingProgress />
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
         <!-- TOC: visible on large screens -->
         <aside v-if="toc.length" class="hidden lg:block">
@@ -85,6 +86,14 @@
         </article>
       </div>
 
+      <!-- Related Posts -->
+      <section v-if="relatedPosts.length" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Related Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <BlogCard v-for="post in relatedPosts" :key="post.path" :post="post" />
+        </div>
+      </section>
+
       <!-- Navigation -->
       <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="flex justify-between">
@@ -147,6 +156,23 @@ const currentIndex = allPosts.findIndex(post => post.path === postPath);
 const prev = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 const next = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
+// Related posts: ranked by number of shared tags, then recency
+const relatedPosts = computed(() => {
+  const currentTags = data.value?.tags || []
+  if (!currentTags.length) return []
+
+  return allPosts
+    .filter(post => post.path !== postPath)
+    .map(post => ({
+      post,
+      sharedTags: (post.tags || []).filter(tag => currentTags.includes(tag)).length
+    }))
+    .filter(({ sharedTags }) => sharedTags > 0)
+    .sort((a, b) => b.sharedTags - a.sharedTags || new Date(b.post.publishedAt).getTime() - new Date(a.post.publishedAt).getTime())
+    .slice(0, 3)
+    .map(({ post }) => post)
+})
+
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -186,4 +212,11 @@ useHead({
     })
   }] : []
 })
+
+if (data.value) {
+  defineOgImage('Default', {
+    title: data.value.title,
+    description: data.value.description
+  })
+}
 </script>

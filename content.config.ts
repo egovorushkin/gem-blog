@@ -15,7 +15,10 @@ export default defineContentConfig({
         author: z.string().optional(),
         readingTime: z.object({
           text: z.string()
-        }).optional()
+        }).optional(),
+        // Non-optional with a default so every post has a non-null value —
+        // @nuxtjs/sitemap's content integration filters `WHERE sitemap IS NOT NULL`.
+        sitemap: z.object({}).passthrough().default({})
       })
     })
   }
