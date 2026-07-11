@@ -4,16 +4,12 @@
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
         About Me
       </h1>
-      <div
-        class="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto mb-6 flex items-center justify-center">
-        <UIcon name="i-heroicons-user" class="w-16 h-16 text-white" />
-      </div>
+      <Avatar wrapper-class="w-32 h-32 mx-auto mb-6" icon-class="w-16 h-16 text-white" />
     </div>
 
     <div class="prose prose-lg prose-indigo max-w-none dark:prose-invert">
       <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-8">
-        Passionate Java developer sharing knowledge about software engineering, best practices, and modern development
-        techniques.
+        Software engineer sharing knowledge about backend engineering, architecture, and the side projects I build along the way.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

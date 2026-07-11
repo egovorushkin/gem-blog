@@ -87,11 +87,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'TechBlog - Java & Software Development',
+      title: 'Evgenii Govorushkin - Software Engineering & Side Projects',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'A personal tech blog sharing insights about Java development and software engineering best practices.' }
+        { name: 'description', content: 'Backend engineering, side projects, and the occasional deep dive from a software engineer who builds things and writes about it.' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

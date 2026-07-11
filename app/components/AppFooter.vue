@@ -4,12 +4,12 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Brand -->
         <div>
-          <div class="flex items-center space-x-2 mb-4">
-            <UIcon name="i-heroicons-code-bracket" class="w-6 h-6 text-indigo-600" />
-            <span class="text-lg font-bold text-gray-900 dark:text-white">TechBlog</span>
+          <div class="flex items-center space-x-2.5 mb-4">
+            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-bold shrink-0">EG</span>
+            <span class="text-lg font-bold text-gray-900 dark:text-white">Evgenii Govorushkin</span>
           </div>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
-            Sharing insights about Java development, software engineering best practices, and the latest in tech.
+            Backend engineering, side projects, and the occasional deep dive — from Java and distributed systems to whatever I'm tinkering with this month.
           </p>
           <div class="flex space-x-4">
             <UButton icon="i-simple-icons-github" variant="ghost" color="neutral" to="https://github.com/egovorushkin" target="_blank"/>
@@ -42,7 +42,7 @@
 
       <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8">
         <p class="text-center text-gray-500 dark:text-gray-400">
-          © {{ new Date().getFullYear() }} TechBlog. All rights reserved.
+          © {{ new Date().getFullYear() }} Evgenii Govorushkin. All rights reserved.
         </p>
       </div>
     </div>

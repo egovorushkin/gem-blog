@@ -11,8 +11,8 @@
 <script setup>
 // Global SEO and meta configuration
 useSeoMeta({
-  titleTemplate: '%s | TechBlog',
-  description: 'A personal tech blog sharing insights about Java development and software engineering best practices.',
+  titleTemplate: '%s | Evgenii Govorushkin',
+  description: 'Backend engineering, side projects, and the occasional deep dive from a software engineer who builds things and writes about it.',
   twitterCard: 'summary_large_image'
 })
 </script>

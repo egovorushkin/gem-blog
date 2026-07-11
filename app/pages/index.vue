@@ -3,11 +3,16 @@
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <Avatar
+          wrapper-class="w-20 h-20 mx-auto mb-6 ring-4 ring-white/30"
+          fallback-class="bg-white/10"
+          icon-class="w-10 h-10 text-white"
+        />
         <h1 class="text-4xl md:text-6xl font-bold mb-6">
-          Welcome to My Tech Blog
+          I build things and write about it
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-indigo-100 max-w-3xl mx-auto">
-          Exploring Java development, software architecture, and modern engineering practices
+          Backend engineering, side projects, and the occasional deep dive — from Java and distributed systems to whatever I'm tinkering with this month.
         </p>
         <UButton size="xl" color="neutral" variant="solid" to="/blog">
           Browse Posts
@@ -117,7 +122,7 @@ function goToPage(p: number) {
 
 useSeoMeta({
   title: 'Home',
-  description: 'A personal tech blog sharing insights about Java development and software engineering best practices.'
+  description: 'Backend engineering, side projects, and the occasional deep dive from a software engineer who builds things and writes about it.'
 })
 
 const config = useRuntimeConfig()

@@ -19,8 +19,9 @@
         <article>
           <!-- Article Header -->
           <header class="mb-12">
-            <div v-if="data.image" class="w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
-              <NuxtImg :src="data.image" :alt="data.title" class="w-full h-full object-cover" />
+            <div class="w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
+              <NuxtImg v-if="data.image" :src="data.image" :alt="data.title" class="w-full h-full object-cover" />
+              <PostCover v-else class="w-full h-full" :title="data.title" :tags="data.tags" />
             </div>
 
             <div class="flex flex-wrap gap-2 mb-4">
@@ -200,7 +201,7 @@ useHead({
       description: data.value.description,
       datePublished: data.value.publishedAt,
       keywords: data.value.tags?.join(', '),
-      author: { '@type': 'Person', name: 'Evgenii' },
+      author: { '@type': 'Person', name: 'Evgenii Govorushkin' },
       url: `${config.public.siteUrl}/blog/${slug}`
     })
   }] : []

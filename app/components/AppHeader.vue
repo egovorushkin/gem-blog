@@ -3,9 +3,11 @@
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center space-x-2">
-          <UIcon name="i-heroicons-code-bracket" class="w-8 h-8 text-indigo-600" />
-          <span class="text-xl font-bold text-gray-900 dark:text-white">TechBlog</span>
+        <NuxtLink to="/" class="flex items-center space-x-2.5">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-600 text-white text-xs font-bold shrink-0">EG</span>
+          <span class="text-base sm:text-lg font-bold text-gray-900 dark:text-white whitespace-nowrap">
+            Evgenii<span class="hidden sm:inline"> Govorushkin</span>
+          </span>
         </NuxtLink>
 
         <!-- Desktop Navigation -->
