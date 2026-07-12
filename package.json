@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build && node scripts/fix-sqlite-wasm.mjs",
+    "build": "nuxt build && node scripts/fix-cloudflare-static-output.mjs",
     "dev": "nuxt dev",
-    "generate": "nuxt generate && node scripts/fix-sqlite-wasm.mjs",
+    "generate": "nuxt generate && node scripts/fix-cloudflare-static-output.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -36,6 +36,7 @@
     "@iconify-json/simple-icons": "^1.2.75",
     "@tailwindcss/typography": "^0.5.20",
     "playwright": "^1.61.1",
-    "remark-reading-time": "^2.0.2"
+    "remark-reading-time": "^2.0.2",
+    "wrangler": "^4.110.0"
   }
 }
