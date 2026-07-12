@@ -14,6 +14,16 @@ export default defineNuxtConfig({
     name: 'Evgenii Govorushkin'
   },
 
+  // Hashed assets (_nuxt/*, _og/*, etc.) are safe to cache forever — their filename
+  // changes on every build. HTML pages are not: force browsers/CDN to always
+  // revalidate them so a stale document referencing an old build's hashed assets
+  // (or missing endpoints) never gets served from cache after a redeploy.
+  routeRules: {
+    '/**': {
+      headers: { 'cache-control': 'public, max-age=0, must-revalidate' }
+    }
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
