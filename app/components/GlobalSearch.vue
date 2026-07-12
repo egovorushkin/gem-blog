@@ -20,17 +20,17 @@
 </template>
 
 <script setup lang="ts">
+const props = defineProps<{
+  posts?: any[]
+}>()
+
 const open = useCommandPalette()
 const router = useRouter()
-
-const { data: posts } = await useAsyncData('search-all-posts', async () => {
-  return (await queryCollection('blog').all()) || []
-})
 
 const groups = computed(() => [{
   id: 'posts',
   label: 'Posts',
-  items: (posts.value || []).map((post: any) => ({
+  items: (props.posts || []).map((post: any) => ({
     label: post.title,
     suffix: post.description,
     icon: 'i-heroicons-document-text',
