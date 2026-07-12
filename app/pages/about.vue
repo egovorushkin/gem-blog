@@ -9,7 +9,7 @@
 
     <div>
       <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-8">
-        Software engineer sharing knowledge about backend engineering, architecture, and the side projects I build along the way.
+        Software engineer, mostly backend and architecture. In free time I build pet projects and write here about what I learn from them.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -40,7 +40,6 @@
             <li>• 5+ years in Java development</li>
             <li>• Enterprise application development</li>
             <li>• Team leadership & mentoring</li>
-            <li>• Open source contributions</li>
             <li>• Technical writing & blogging</li>
           </ul>
         </UCard>
@@ -48,16 +47,66 @@
 
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">My Journey</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-4">
-        I started my journey in software development with a passion for problem-solving and clean code.
-        Over the years, I've worked on various projects ranging from small applications to large-scale
-        enterprise systems.
+        I got into software development because I like solving problems and I like when code still
+        makes sense a year later. Over the years I worked on different kind of projects, from small
+        apps to big enterprise systems.
       </p>
 
       <p class="text-gray-600 dark:text-gray-300 mb-4">
-        This blog is my way of giving back to the developer community by sharing the knowledge and
-        experiences I've gained throughout my career. I believe in continuous learning and staying
-        updated with the latest trends in technology.
+        This blog is mostly where I write down things I learn or figure out, so I don't forget them,
+        and maybe it helps someone else too. I try to keep learning and stay up to date with what is
+        happening in tech.
       </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <UCard>
+          <template #header>
+            <div class="flex items-center space-x-2">
+              <img src="/images/sysMon.png" alt="SysMon app icon" class="w-5 h-5 rounded-md">
+              <h3 class="text-lg font-semibold">SysMon</h3>
+            </div>
+          </template>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            A macOS app that shows CPU, RAM, disk and temperature usage at a glance.
+          </p>
+          <UButton icon="i-simple-icons-github" variant="outline" color="gray" size="sm"
+            to="https://github.com/egovorushkin/sysmon" target="_blank">
+            View on GitHub
+          </UButton>
+        </UCard>
+
+        <UCard>
+          <template #header>
+            <div class="flex items-center space-x-2">
+              <img src="/images/infinite_todo.png" alt="Infinite TODO app icon" class="w-5 h-5 rounded-md">
+              <h3 class="text-lg font-semibold">Infinite TODO</h3>
+            </div>
+          </template>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            A simple to-do app for iOS.
+          </p>
+          <UButton icon="i-simple-icons-github" variant="outline" color="gray" size="sm"
+            to="https://github.com/egovorushkin/infinite-todo" target="_blank">
+            View on GitHub
+          </UButton>
+        </UCard>
+
+        <UCard>
+          <template #header>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/rcivitas_icon.png" alt="RCivitas app icon" class="w-5 h-5 rounded-md">
+                <h3 class="text-lg font-semibold">RCivitas</h3>
+              </div>
+              <UBadge variant="soft" color="amber" size="sm">In progress</UBadge>
+            </div>
+          </template>
+          <p class="text-gray-600 dark:text-gray-300">
+            A social network for RC (remote control) modellers. Still building it, repo is private for now.
+          </p>
+        </UCard>
+      </div>
 
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What You'll Find Here</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

@@ -102,6 +102,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Backend engineering, side projects, and the occasional deep dive from a software engineer who builds things and writes about it.' }
       ],
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
